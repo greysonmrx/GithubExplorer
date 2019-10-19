@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { Keyboard } from 'react-native';
+import api from '../../services/api';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { 
@@ -13,8 +15,20 @@ export default function Main({ navigation }) {
     const [users, setUsers] = useState([]);
     const [newUser, setNewUser] = useState('');
 
-    function handleAddUser() {
-        alert(newUser);
+    async function handleAddUser() {
+        const { data } = await api.get(`/users/${newUser}`);
+
+        const user = {
+            name: data.name,
+            login: data.login,
+            bio: data.bio,
+            avatar: data.avatar_url
+        };
+
+        setUsers(lastUsers => [...lastUsers, user]);
+        setNewUser('');
+
+        Keyboard.dismiss();
     }
 
     return (

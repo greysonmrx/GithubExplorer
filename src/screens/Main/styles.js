@@ -54,7 +54,7 @@ export const Avatar = styled.Image`
 `;
 
 export const Name = styled.Text`
-    font-weight: bold;
+    font-family: 'Product Sans Bold';
     font-size: 14px;
     color: #333333;
     margin-top: 4px;
@@ -64,6 +64,7 @@ export const Name = styled.Text`
 export const Bio = styled.Text.attrs({
     numberOfLines: 2
 })`
+    font-family: 'Product Sans Regular';
     font-size: 13px;
     line-height: 18px;
     color: #999999;
@@ -82,8 +83,8 @@ export const ProfileButton = styled(RectButton)`
 `;
 
 export const ProfileButtonText = styled.Text`
+    font-family: 'Product Sans Bold';
     font-size: 14px;
-    font-weight: bold;
     color: #FFFFFF;
     text-transform: uppercase;
 `;

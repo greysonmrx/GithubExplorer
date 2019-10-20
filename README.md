@@ -5,8 +5,8 @@ Aplicativo mobile que realiza consulta de dados dos usuários e organizações a
 * **Screenshots**
 <table>
   <tr align="center">
-    <td><img src="https://github.com/greysonmrx/Climapp/blob/master/screen1.PNG" width="240" height="400">      </td>
-    <td><img src="https://github.com/greysonmrx/Climapp/blob/master/screen2.PNG" width="240" height="400">      </td>
+    <td><img src="https://github.com/greysonmrx/GithubExplorer/blob/master/screen1.PNG" width="240" height="400">      </td>
+    <td><img src="https://github.com/greysonmrx/GithubExplorer/blob/master/screen2.PNG" width="240" height="400">      </td>
   </tr>
 </table>
 

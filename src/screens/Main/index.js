@@ -30,13 +30,14 @@ export default function Main({ navigation }) {
         try {
             const { data } = await api.get(`/users/${newUser}`);
 
-            console.log(data);
-
             const user = {
                 name: data.name,
                 login: data.login,
                 bio: data.bio,
-                avatar: data.avatar_url
+                avatar: data.avatar_url,
+                followers: data.followers,
+                repos: data.public_repos,
+                following: data.following
             };
 
             setUsers(lastUsers => [...lastUsers, user]);
@@ -52,7 +53,6 @@ export default function Main({ navigation }) {
 
     async function handleUsersUpdate() {
         await AsyncStorage.setItem('users', JSON.stringify(users));
-        console.log(`Guardou!`);
     }
 
     async function getUsers() {
@@ -60,8 +60,11 @@ export default function Main({ navigation }) {
 
         if (usersStorage) {
             setUsers(JSON.parse(usersStorage));
-            console.log(JSON.parse(usersStorage));
         }
+    }
+
+    function handleNavigate(item) {
+        navigation.navigate('User', { item });
     }
 
     useEffect(() => {
@@ -111,10 +114,10 @@ export default function Main({ navigation }) {
                         <Avatar 
                             source={{ uri: item.avatar }}
                         />
-                        <Name>{ item.name }</Name>
-                        <Bio>{ item.bio }</Bio>
+                        <Name>{ item.name || item.login }</Name>
+                        <Bio>{ item.bio || 'Sem descrição' }</Bio>
                         <ProfileButton
-                            onPress={() => {}}
+                            onPress={() => handleNavigate(item)}
                         >
                             <ProfileButtonText>Ver perfil</ProfileButtonText>
                         </ProfileButton>
@@ -123,8 +126,4 @@ export default function Main({ navigation }) {
             />
         </Container>
     );
-}
-
-Main.navigationOptions = {
-    title: 'Usuários'
 }
